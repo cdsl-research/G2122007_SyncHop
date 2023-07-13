@@ -1,0 +1,23 @@
+{
+  "esp32":{
+    "esp001":{
+      "mac" : "fcf5c43d3b2c"
+    },
+    "esp002":{
+      "mac" : ""
+    },
+    "esp003":{
+      "mac" : "ec626083bc10"
+    },
+    "esp004":{
+      "mac" : "7821849caa5c"
+    },
+    "esp005":{
+      "mac" : "7821849d1b00"
+    }
+  },
+  "broadcast":{
+    "mac" : "ffffffffffff"
+  }
+} 
+
