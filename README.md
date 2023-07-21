@@ -16,7 +16,7 @@ Setting MAC addresses in config.json and setting peers.
 ```
 peer1 = ubinascii.unhexlify(di["esp32"]["esp004"]["mac"].encode())
 ```
-Executing each programs in terminal.
+Executing each programs on terminal.
 ```
 execfile("sender.py") #(Role | sender, relay, receiver).py
 ```
