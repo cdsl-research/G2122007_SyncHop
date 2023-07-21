@@ -4,20 +4,22 @@
       "mac" : "fcf5c43d3b2c"
     },
     "esp002":{
-      "mac" : ""
-    },
-    "esp003":{
       "mac" : "ec626083bc10"
     },
-    "esp004":{
+    "esp003":{
       "mac" : "7821849caa5c"
     },
-    "esp005":{
+    "esp004":{
       "mac" : "7821849d1b00"
+    },
+    "esp005":{
+      "mac" : "4022d8ea8928"
+    },
+    "esp006":{
+      "mac" : "4022d8eb4a04"
     }
   },
   "broadcast":{
     "mac" : "ffffffffffff"
   }
 } 
-
