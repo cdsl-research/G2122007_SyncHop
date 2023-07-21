@@ -1,5 +1,5 @@
-# G2122007_03
-Multihop network software for ESP32.
+# SyncHop
+SyncHop is a software for ESP-NOW network.
 
 This software is implemented by micropython.
 
