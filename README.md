@@ -14,8 +14,19 @@ This software is implemented by micropython.
 
 # Usage
 Setting MAC addresses in config.json and setting peers.
+```config.json
+{
+  "esp32":{
+    "esp001":{
+      "mac" : <MAC_ADDRESS>
+    },
+    ...
+  }
+  ...
+}
 ```
-peer1 = ubinascii.unhexlify(di["esp32"]["esp004"]["mac"].encode())
+```
+peer1 = ubinascii.unhexlify(di["esp32"]["esp001"]["mac"].encode())
 ```
 Executing each programs on terminal.
 ```
