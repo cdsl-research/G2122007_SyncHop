@@ -1,39 +1,50 @@
-import network
 from esp import espnow
 import utime
+import random
+import ujson
+import ubinascii
 
-execfile("ntptime.py")
+with open('config.json') as f:
+  di = ujson.load(f)
 
-# A WLAN interface must be active to send()/recv()
-w0 = network.WLAN(network.STA_IF)  # Or network.AP_IF
-w0.active(True)
-#w0.disconnect()   # For ESP8266
-#utime.sleep(600)
+e = espnow.ESPNow()
+e.init()
+print("init")
+peer1 = ubinascii.unhexlify(di["esp32"]["esp004"]["mac"].encode())
 
-for i in range(1):
-  utime.sleep(10)
-  e = espnow.ESPNow()
-  e.init()
-  print("init")
-  peer = b'\xb8\xf0\t\xc5\xc2\xb8' # MAC address of peer's wifi interface
+print(peer1)
+e.add_peer(peer1)
+print("add_peer: ", peer1)
 
-  e.add_peer(peer)
-  print("add_peer: ", peer)
+for i in range(100):
+  preamble = "AB"
+  data=str(i)+str(utime.mktime(utime.localtime()))+":esp006:"+str(random.random())
+  pre_num = 0
+  for j in range(10):
+    pre_num = j
+    tmp = e.stats()[2]
+    e.send(peer1,preamble,True)
+    print(j)
+    if tmp == e.stats()[2]:
+      print(f"{tmp}:{e.stats()[2]},preamble was sended")
+      utime.sleep(1)
+      break
+    utime.sleep(1)
+  tmp2 = e.stats()[2]
+  e.send(peer1,data,True)
+  if tmp2 == e.stats()[2]:
+    print(f"{tmp}:{e.stats()[2]},success")
+    with open("result.csv","a") as f:
+      data = str(i)+","+str(pre_num)+",SUCCESS"
+      f.write(data)
+  else:
+    print(f"{tmp}:{e.stats()[2]},failed")
+    with open("result.csv","a") as f:
+      data = str(i)+","+str(pre_num)+",FAILED"
+      f.write(data)
+  print(data)
+  utime.sleep(1)
 
-  e.send("Starting...")       # Send to all peers
-  print("Starting...")
-  for i in range(300):
-    f = open("network.txt", "a")
-    e.send(peer, str(i), True)
-    f.write(str(utime.localtime()))
-    f.write(",")
-    f.write(str(e.stats()))
-    f.write("\n")
-    utime.sleep(0.1)
-    f.close()
-  e.send(b'end')
-  print("0"*20)
-  print("end")
-  e.deinit()
-  
-  #utime.sleep(180)
+e.deinit()
+print("deinit")
+
