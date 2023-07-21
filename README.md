@@ -28,5 +28,5 @@ peer1 = ubinascii.unhexlify(di["esp32"]["esp001"]["mac"].encode())
 ```
 Executing each programs on terminal.
 ```
-execfile("sender.py") #(Role | sender, relay, receiver).py
+execfile("sender.py") #{Role | sender, relay, receiver}.py
 ```
