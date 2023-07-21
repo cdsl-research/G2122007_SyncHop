@@ -5,8 +5,8 @@ try:
   e.init()
   print("init")
 
-  recv_from = b'\xecb`\x83\xbc\x10'   # MAC address of peer's wifi interface
-  send_to = b'\xfc\xf5\xc4=;,'
+  recv_from = ubinascii.unhexlify(di["esp32"]["esp006"]["mac"].encode())   # MAC address of peer's wifi interface
+  send_to = ubinascii.unhexlify(di["esp32"]["esp002"]["mac"].encode())
   e.add_peer(recv_from)
   e.add_peer(send_to)
   print("add_peer: ", recv_from, send_to)
