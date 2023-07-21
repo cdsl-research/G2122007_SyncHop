@@ -18,11 +18,9 @@ Setting MAC addresses in config.json and setting peers.
 {
   "esp32":{
     "esp001":{
-      "mac" : <MAC_ADDRESS>
+      "mac" : "<MAC_ADDRESS>"
     },
-    ...
   }
-  ...
 }
 ```
 ```
