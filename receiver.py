@@ -10,7 +10,7 @@ with open('config.json') as f:
 e = espnow.ESPNow()
 e.init()
 print("init")
-peer1 = ubinascii.unhexlify(di["esp32"]["esp006"]["mac"].encode())
+peer1 = ubinascii.unhexlify(di["esp32"]["esp004"]["mac"].encode())
 print(peer1)
 e.add_peer(peer1)
 print("add_peer: ", peer1)
